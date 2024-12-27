@@ -3,9 +3,8 @@
 from abc import abstractmethod
 from typing import Any
 
-from agogos.transforming import Transformer
-
 from epochlib.caching.cacher import CacheArgs, Cacher
+from epochlib.pipeline import Transformer
 
 
 class TransformationBlock(Transformer, Cacher):
@@ -55,7 +54,7 @@ class TransformationBlock(Transformer, Cacher):
         data = custom_transformation_block.transform(data, cache=cache_args)
     """
 
-    def transform(self, data: Any, cache_args: CacheArgs | None = None, **transform_args: Any) -> Any:  # noqa: ANN401
+    def transform(self, data: Any, cache_args: CacheArgs | None = None, **transform_args: Any) -> Any:
         """Transform the input data using a custom method.
 
         :param data: The input data.
@@ -78,7 +77,7 @@ class TransformationBlock(Transformer, Cacher):
         return data
 
     @abstractmethod
-    def custom_transform(self, data: Any, **transform_args: Any) -> Any:  # noqa: ANN401
+    def custom_transform(self, data: Any, **transform_args: Any) -> Any:
         """Transform the input data using a custom method.
 
         :param data: The input data.

@@ -2,13 +2,12 @@
 
 from typing import Any
 
-from agogos.training import Pipeline
-
 from epochlib.caching import CacheArgs
+from epochlib.pipeline import Pipeline
 
 
 class ModelPipeline(Pipeline):
-    """ModelPipeline is the class used to create the pipeline for the model. (Currently same implementation as agogos pipeline).
+    """ModelPipeline is the class used to create the pipeline for the model.
 
     :param x_sys: The system to transform the input data.
     :param y_sys: The system to transform the label data.
@@ -24,7 +23,7 @@ class ModelPipeline(Pipeline):
         """
         return super().__post_init__()
 
-    def train(self, x: Any, y: Any, **train_args: Any) -> tuple[Any, Any]:  # noqa: ANN401
+    def train(self, x: Any, y: Any, **train_args: Any) -> tuple[Any, Any]:
         """Train the system.
 
         :param x: The input to the system.
@@ -33,7 +32,7 @@ class ModelPipeline(Pipeline):
         """
         return super().train(x, y, **train_args)
 
-    def predict(self, x: Any, **pred_args: Any) -> Any:  # noqa: ANN401
+    def predict(self, x: Any, **pred_args: Any) -> Any:
         """Predict the output of the system.
 
         :param x: The input to the system.

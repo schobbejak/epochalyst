@@ -32,6 +32,7 @@ ignore = [
     # flake8-annotations (ANN)
     "ANN101",  # Missing type annotation for self in method
     "ANN102",  # Missing type annotation for cls in classmethod
+    "ANN401",  # Allow Any type in epochlib
     # flake8-errmsg (EM)
     "EM101",  # Exception must not use a string literal, assign to variable first
     "EM102",  # Exception must not use an f-string literal, assign to variable first

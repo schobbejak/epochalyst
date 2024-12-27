@@ -3,7 +3,7 @@
 from typing import Any
 
 
-def _get_onnxrt() -> Any:  # noqa: ANN401
+def _get_onnxrt() -> Any:
     """Return onnxruntime."""
     try:
         import onnxruntime as onnxrt
@@ -17,7 +17,7 @@ def _get_onnxrt() -> Any:  # noqa: ANN401
         return onnxrt
 
 
-def _get_openvino() -> Any:  # noqa: ANN401
+def _get_openvino() -> Any:
     """Return openvino."""
     try:
         import openvino

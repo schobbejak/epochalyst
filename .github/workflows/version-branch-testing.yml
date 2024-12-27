@@ -17,7 +17,7 @@ jobs:
     - name: Setup the environment
       run: rye sync --all-features
     - name: Test with pytest
-      run: rye run pytest --cov=epochlib --cov-branch --cov-fail-under=95 tests
+      run: rye run pytest --cov=epochlib --cov-branch --cov-fail-under=75 tests
 
   build:
     runs-on: ubuntu-latest

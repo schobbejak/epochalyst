@@ -54,7 +54,7 @@ class PretrainBlock(TrainingBlock):
     test_size: float = 0.2
 
     @abstractmethod
-    def pretrain_train(self, x: Any, y: Any, train_indices: list[int], *, save_pretrain: bool = True, save_pretrain_with_split: bool = False) -> tuple[Any, Any]:  # noqa: ANN401
+    def pretrain_train(self, x: Any, y: Any, train_indices: list[int], *, save_pretrain: bool = True, save_pretrain_with_split: bool = False) -> tuple[Any, Any]:
         """Train pretrain block method.
 
         :param x: The input to the system.
@@ -67,7 +67,7 @@ class PretrainBlock(TrainingBlock):
             f"Train method not implemented for {self.__class__.__name__}",
         )
 
-    def custom_train(self, x: Any, y: Any, **train_args: Any) -> tuple[Any, Any]:  # noqa: ANN401
+    def custom_train(self, x: Any, y: Any, **train_args: Any) -> tuple[Any, Any]:
         """Call the pretrain train method.
 
         :param x: The input to the system.

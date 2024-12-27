@@ -6,7 +6,7 @@ from typing import Any
 import torch
 
 
-def get_kornia_mix() -> Any:  # noqa: ANN401
+def get_kornia_mix() -> Any:
     """Return kornia mix."""
     try:
         import kornia

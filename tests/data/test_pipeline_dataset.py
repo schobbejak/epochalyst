@@ -6,11 +6,12 @@ from epochlib.training import TrainingBlock
 import numpy as np
 import numpy.typing as npt
 from typing import Any
-import torch
+
 
 class TestDataRetrieval(DataRetrieval):
     BASE = 2**0
     FIRST = 2**1
+
 
 @dataclass
 class CustomData(Data):
@@ -19,7 +20,7 @@ class CustomData(Data):
 
     def __post_init__(self) -> None:
         self.retrieval = TestDataRetrieval.BASE
-    
+
     def __getitem__(self, idx: int | npt.NDArray[np.int_] | list[int] | slice) -> npt.NDArray[Any] | list[Any]:
         """Get item from the data.
 
@@ -64,6 +65,7 @@ class CustomData(Data):
             return len(self.data2)
         return 0
 
+
 class TestTrainingBlockNoAug(TrainingBlock):
 
     def train(
@@ -79,6 +81,7 @@ class TestTrainingBlockNoAug(TrainingBlock):
     def is_augmentation(self) -> bool:
         """Check if augmentation is enabled."""
         return False
+
 
 class TestTrainingBlockWithAug(TrainingBlock):
 
@@ -96,8 +99,9 @@ class TestTrainingBlockWithAug(TrainingBlock):
         """Check if augmentation is enabled."""
         return True
 
+
 class TestPipelineDataset(TestCase):
-    
+
     def test_initialization_errors(self) -> None:
         with self.assertRaises(ValueError):
             PipelineDataset()
@@ -144,16 +148,16 @@ class TestPipelineDataset(TestCase):
         pd_with_data = PipelineDataset(
             retrieval=['BASE'], retrieval_type=TestDataRetrieval, steps=[step], x=test_data
         )
-        self.assertTrue((pd_with_data[[0,1]][0] == [0,1]).all())
+        self.assertTrue((pd_with_data[[0, 1]][0] == [0, 1]).all())
 
         pd_with_indices = PipelineDataset(
-            retrieval=['BASE'], retrieval_type=TestDataRetrieval, steps=[step], x=test_data, indices=np.array([0,2])
+            retrieval=['BASE'], retrieval_type=TestDataRetrieval, steps=[step], x=test_data, indices=np.array([0, 2])
         )
-        self.assertTrue((pd_with_indices[[0,1]][0] == [0,2]).all())
+        self.assertTrue((pd_with_indices[[0, 1]][0] == [0, 2]).all())
 
         pd_no_data = PipelineDataset(retrieval=['BASE'], retrieval_type=TestDataRetrieval, steps=[step])
         with self.assertRaises(ValueError):
-            pd_no_data[[0,1]]
+            pd_no_data[[0, 1]]
 
     def test_len(self) -> None:
         test_data = CustomData()
@@ -165,12 +169,12 @@ class TestPipelineDataset(TestCase):
         )
         self.assertTrue(len(pd_with_data) == 3)
 
-        pd_with_data.initialize(x=test_data, y=test_data, indices=np.array([0,2]))
+        pd_with_data.initialize(x=test_data, y=test_data, indices=np.array([0, 2]))
         # pd_with_indices = PipelineDataset(
         #     retrieval=['BASE'], retrieval_type=TestDataRetrieval, steps=[step], x=test_data, indices=np.array([0,2])
         # )
         self.assertTrue(len(pd_with_data) == 2)
-    
+
         pd_no_data = PipelineDataset(retrieval=['BASE'], retrieval_type=TestDataRetrieval, steps=[step])
         with self.assertRaises(ValueError):
             self.assertTrue(len(pd_no_data))

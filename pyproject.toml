@@ -30,7 +30,6 @@ classifiers = [
 ]
 dependencies = [
     "torch>=2.1.0",
-    "agogos>=0.4",
     "joblib>=1.4.0",
     "annotated-types>=0.6.0",
     "typing-extensions>=4.9.0; python_version<'3.12'",

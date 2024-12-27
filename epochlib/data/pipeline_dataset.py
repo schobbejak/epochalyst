@@ -77,7 +77,7 @@ class PipelineDataset(Dataset[Tuple[T, T]]):
 
         :param use_augmentations: Whether to use augmentations while passing data through pipeline
         """
-        self._enabled_steps = []
+        self._enabled_steps: list[TrainingBlock] = []
 
         if self.steps is not None:
             for step in self.steps:

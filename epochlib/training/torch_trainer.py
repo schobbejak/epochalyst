@@ -409,7 +409,7 @@ class TorchTrainer(TrainingBlock):
             case _:
                 raise ValueError("to_predict should be either 'validation', 'all' or 'none")
 
-    def custom_predict(self, x: Any, **pred_args: Any) -> npt.NDArray[np.float32]:  # noqa: ANN401
+    def custom_predict(self, x: Any, **pred_args: Any) -> npt.NDArray[np.float32]:
         """Predict on the validation data.
 
         :param x: The input to the system.
