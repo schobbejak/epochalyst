@@ -28,6 +28,6 @@ jobs:
       uses: eifinger/setup-rye@v4.2.1
     - name: Build the package
       run: rye build
-    - uses: actions/upload-artifact@v4.3.3
+    - uses: actions/upload-artifact@v4.5.0
       with:
         path: ./dist
